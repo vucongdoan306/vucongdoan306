@@ -1,0 +1,54 @@
+﻿@model List<TryOnlineShop.Areas.admin.Model.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        DataTable Example
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Alias</th>
+                    <th>ParentID</th>
+                    <th>CreatedDate</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Alias</th>
+                    <th>ParentID</th>
+                    <th>CreatedDate</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Alias</td>
+                        <td>@item.ParentID</td>
+                        <td>@(item.CreatedDate.HasValue? item.CreatedDate.Value.ToString("dd/MM/yyyy") : "")</td>
+                        <td>@item.Order.GetValueOrDefault(0)</td>
+                        <td>@(item.Status.GetValueOrDefault(false)?"Active":"Block")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
